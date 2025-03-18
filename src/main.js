@@ -49,7 +49,7 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.5))
 const woodTexture = new THREE.TextureLoader().load('/wood_texture.jpg');
 
 //Shelf Object
-// const shelfBacking = new THREE.BoxGeometry();
+//Shelves
 const shelfShape = new THREE.BoxGeometry(20, 1, 4);
 const shelfMaterial = new THREE.MeshBasicMaterial({ 
   map: woodTexture 
@@ -74,6 +74,14 @@ const shelf5 = new THREE.Mesh(shelfShape, shelfMaterial);
 shelf5.translateY(40);
 scene.add(shelf5);
 
+//Shelf Backing
+const shelfBackingShape = new THREE.BoxGeometry(20, 50, 1);
+const shelfBacking = new THREE.Mesh(shelfBackingShape, shelfMaterial)
+shelfBacking.translateZ(-2.5)
+shelfBacking.translateY(25)
+scene.add(shelfBacking)
+
+
 
 // Create movie instances
 const anora = new Movie('Anora', '/anora_poster.jpg', 'Arial', 'lightgray', new THREE.Vector3(0, 3.5, 0), new THREE.Vector3(0, 3.5, 10));
@@ -82,6 +90,33 @@ const didi = new Movie('Didi', '/didi_poster.jpg', 'Arial', 'lightgray', new THR
 scene.add(anora.movieObject);
 scene.add(didi.movieObject);
 
+// // Store Movie
+// const movies = [];
+
+// // Push movies onto list
+// movies.push(anora);
+// movies.push(didi);
+
+// // Movie Menu Button logic
+// const movieMenuButton = document.getElementById('movieMenuButton');
+// const movieMenu = document.getElementById('movieMenu');
+// const movieList = document.getElementById('movieList');
+
+// // Show/Hide the movie menu
+// movieMenuButton.addEventListener('click', () => {
+//   movieMenu.style.display = movieMenu.style.display === 'none' ? 'block' : 'none';
+
+//   // Clear the movie list and populate with current movies
+//   movieList.innerHTML = '';
+//   movies.forEach(movie => {
+//       const listItem = document.createElement('li');
+//       listItem.textContent = movie.name;
+//       listItem.addEventListener('click', () => {
+//           alert(`You clicked on: ${movie.name}`);
+//       });
+//       movieList.appendChild(listItem);
+//   });
+// });
 
 // MOUSE MOVE EVENT
 window.addEventListener('mousemove', (event) => {
