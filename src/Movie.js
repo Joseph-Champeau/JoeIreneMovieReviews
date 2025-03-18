@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 class Movie {
-    constructor(name, posterPath, font, color, startPosition, endPosition) {
+    constructor(name, posterPath, font, color, startPosition, endPosition, rating) {
       // Properties
       this.name = name;
       this.poster = new THREE.TextureLoader().load(posterPath);  // Load the poster texture
@@ -9,6 +9,7 @@ class Movie {
       this.color = color;
       this.startPosition = startPosition || new THREE.Vector3(0, 0, 0); // Default to (0, 0, 0)
       this.endPosition = endPosition || new THREE.Vector3(0, 0, 10); // Default to (0, 0, 10)
+      this.rating = rating; // Star rating (1-5)
   
       // Create the box geometry (CD box)
       this.boxGeometry = new THREE.BoxGeometry(0.5, 6, 4);
