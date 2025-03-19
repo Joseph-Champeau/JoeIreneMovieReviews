@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Movie from './Movie.js';  // Import the Movie class from the Movie.js file
 
@@ -61,6 +63,31 @@ const shelfBacking = new THREE.Mesh(shelfBackingShape, shelfMaterial);
 shelfBacking.translateZ(-2.5);
 shelfBacking.translateY(25);
 scene.add(shelfBacking);
+
+// 3D Text
+const loader = new FontLoader();
+
+loader.load( '/Moderustic_Regular.json', function ( font ) {
+
+	const geometry = new TextGeometry( 'Hello three.js!', {
+		font: font,
+		size: 2,
+		depth: 5,
+		curveSegments: 1,
+		bevelEnabled: true,
+		bevelThickness: 1,
+		bevelSize: 1,
+		bevelOffset: 0,
+		bevelSegments: 1
+	} );
+
+  const textMesh = new THREE.Mesh(geometry, [
+    new THREE.MeshPhongMaterial({ color: 0xad4000 }),
+    new THREE.MeshPhongMaterial({ color: 0x5c2301 })
+  ]);
+
+  scene.add(textMesh)
+} );
 
 // Movie Data
 const movies = [
